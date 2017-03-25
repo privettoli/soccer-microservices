@@ -5,22 +5,27 @@ spring:
     username: root
     password: root
     driverClassName: com.mysql.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/soccer?createDatabaseIfNotExist=true&useSSL=false"
+    url: "jdbc:mysql://localhost:3306/soccer_service?createDatabaseIfNotExist=true&useSSL=false"
   jpa:
     database: mysql
-    show-sql: true
+    show-sql: false
     hibernate:
       ddl-auto: validate
-    properties.hibernate.dialectddialect: org.hibernate.dialect.MySQLInnoDBDialect
+    properties:
+      hibernate.dialectddialect: org.hibernate.dialect.MySQLInnoDBDialect
+      org.envers.audit_table_suffix: "_audit_log"
   resources:
     chain.strategy.content:
       enabled: true
       paths: /**
   jackson:
     serialization:
-      write_dates_as_timestamps: true
-      write_date_timestamps_as_nanoseconds: false
-    deserialization.read_date_timestamps_as_nanoseconds: false
+      WRITE_DATES_AS_TIMESTAMPS: false
+      WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS: false
+      FAIL_ON_EMPTY_BEANS: false
+    deserialization:
+      READ_DATE_TIMESTAMPS_AS_NANOSECONDS: false
+    default-property-inclusion: non_absent
   http.encoding.force: true
 
 endpoints:
