@@ -1,0 +1,30 @@
+server.servlet-path: /api/v1
+spring:
+  application.name: soccer-service
+  datasource:
+    username: root
+    password: root
+    driverClassName: com.mysql.jdbc.Driver
+    url: "jdbc:mysql://localhost:3306/soccer?createDatabaseIfNotExist=true&useSSL=false"
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties.hibernate.dialectddialect: org.hibernate.dialect.MySQLInnoDBDialect
+  resources:
+    chain.strategy.content:
+      enabled: true
+      paths: /**
+  jackson:
+    serialization:
+      write_dates_as_timestamps: true
+      write_date_timestamps_as_nanoseconds: false
+    deserialization.read_date_timestamps_as_nanoseconds: false
+  http.encoding.force: true
+
+endpoints:
+  enabled: true
+  sensitive: false
+
+liquibase.change-log: "classpath:liquibase/list.xml"
