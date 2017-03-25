@@ -160,6 +160,6 @@ gradle-app.setting
 */build/
 
 ### Ingore Gradle wrapper files (do updates manually)
-gradlew
-gradlew.bat
-gradle
+/gradlew
+/gradlew.bat
+/gradle
